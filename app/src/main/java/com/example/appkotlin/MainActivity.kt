@@ -15,8 +15,6 @@ class MainActivity : AppCompatActivity() {
 
         val campoSeach = findViewById<EditText>(R.id.campoSeach)
 
-        campoSeach.setBackgroundDrawable()
-
         button.setOnClickListener {
             val intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)

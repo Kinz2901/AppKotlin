@@ -17,7 +17,6 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-
         <LinearLayout
             android:id="@+id/blocoSearch"
             android:layout_width="match_parent"
@@ -28,10 +27,11 @@
 
             <EditText
                 android:id="@+id/campoSeach"
-                android:layout_width="318dp"
+                android:layout_width="356dp"
                 android:layout_height="48dp"
                 android:background="@color/white"
-                android:padding="10dp" />
+                android:paddingLeft="20dp"
+                android:hint="Buscar produto" />
 
             <SearchView
                 android:layout_width="wrap_content"
