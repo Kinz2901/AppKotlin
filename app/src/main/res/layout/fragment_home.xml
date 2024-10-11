@@ -6,12 +6,29 @@
     tools:context=".HomeFragment"
     android:background="@color/purple_200">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home Fragment"
-        android:textSize="26dp"
-        android:layout_gravity="center"/>
+
+
+        <LinearLayout
+            android:id="@+id/blocoSearch"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/border"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/campoSeach"
+                android:layout_width="356dp"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                android:paddingLeft="20dp"
+                android:hint="Buscar produto" />
+
+            <SearchView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
 
 </FrameLayout>

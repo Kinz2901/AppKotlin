@@ -5,19 +5,40 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        replaceFragment(HomeFragment())
 
-        val button = findViewById<Button>(R.id.button)
+        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
-        val campoSeach = findViewById<EditText>(R.id.campoSeach)
+        bottomNavigation.setOnItemSelectedListener {
+            when(it.itemId) {
+                R.id.home -> replaceFragment(HomeFragment())
+                R.id.profile -> replaceFragment(ProfileFragment())
+                R.id.addItem -> replaceFragment(AddItemFragment())
 
-        button.setOnClickListener {
-            val intent = Intent(this, MainActivity2::class.java)
-            startActivity(intent)
+                else -> {
+
+
+                }
+
+            }
+
+            true
         }
+
     }
+
+    private fun replaceFragment(fragment : Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frameLayout,fragment)
+        fragmentTransaction.commit()
+    }
+
 }
