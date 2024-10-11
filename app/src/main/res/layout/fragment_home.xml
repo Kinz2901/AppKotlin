@@ -4,30 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment"
-    android:background="@color/purple_200">
+    android:background="#1C1C1C">
 
 
+    <LinearLayout
+        android:id="@+id/blocoSearch"
+        android:layout_width="410dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="#363636"
+        android:gravity="center">
 
-        <LinearLayout
-            android:id="@+id/blocoSearch"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/border"
-            android:gravity="center">
+        <EditText
+            android:id="@+id/campoSeach"
+            android:layout_width="356dp"
+            android:layout_height="48dp"
+            android:background="#363636"
+            android:hint="Buscar produto"
+            android:paddingLeft="20dp"
+            android:textColor="#808080"
+            android:textColorHint="#808080" />
 
-            <EditText
-                android:id="@+id/campoSeach"
-                android:layout_width="356dp"
-                android:layout_height="48dp"
-                android:background="@color/white"
-                android:paddingLeft="20dp"
-                android:hint="Buscar produto" />
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="38px"
+            android:src="@drawable/search" />
 
-            <SearchView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+    </LinearLayout>
 
 
 
