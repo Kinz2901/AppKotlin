@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,15 +9,13 @@
     android:layout_gravity="center_vertical"
     tools:context=".CriarAnuncio">
 
-  <Button
-      android:id="@+id/buttonProduct"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Button"
-      />
+  <ImageView
+      android:id="@+id/setaBack"
+      android:layout_width="47dp"
+      android:layout_height="47dp"
+      android:layout_weight="1"
+      app:srcCompat="@drawable/seta_back"
+      tools:layout_editor_absoluteX="16dp"
+      tools:layout_editor_absoluteY="16dp" />
 
-  <com.google.android.material.bottomnavigation.BottomNavigationView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:background="@color/black"/>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
