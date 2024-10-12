@@ -12,7 +12,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        replaceFragment(HomeFragment())
+        val fragmentToShow = intent.getStringExtra("showFragment")
+        if (fragmentToShow == "AddItemFragment") {
+            replaceFragment(AddItemFragment())
+        } else {
+            replaceFragment(HomeFragment())
+        }
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
