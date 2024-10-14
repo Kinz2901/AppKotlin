@@ -17,19 +17,16 @@
 
         <EditText
             android:id="@+id/campoSeach"
-            android:layout_width="356dp"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="#363636"
             android:hint="Buscar produto"
             android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:textColor="#808080"
+            android:drawableRight="@drawable/search"
             android:textColorHint="#808080" />
 
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:padding="38px"
-            android:src="@drawable/search" />
 
     </LinearLayout>
 
