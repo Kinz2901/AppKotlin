@@ -22,6 +22,19 @@
       app:layout_constraintTop_toTopOf="parent"
       app:srcCompat="@drawable/adicionar" />
 
+  <TextView
+      android:id="@+id/textAdicionarImg"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Adicionar Imagem"
+      android:textSize="20dp"
+      app:layout_constraintBottom_toBottomOf="@+id/imgView"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.501"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/imgView"
+      app:layout_constraintVertical_bias="0.685" />
+
   <ImageButton
       android:id="@+id/setaBack"
       android:layout_width="60dp"
@@ -199,19 +212,6 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
-
-  <TextView
-      android:id="@+id/textView4"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Adicionar Imagem"
-      android:textSize="20dp"
-      app:layout_constraintBottom_toBottomOf="@+id/imgView"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.501"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/imgView"
-      app:layout_constraintVertical_bias="0.685" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

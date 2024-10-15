@@ -1,21 +1,15 @@
 package com.example.appkotlin
 
-
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils.replace
-import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ReportFragment.Companion.reportFragment
-
 
 class CriarAnuncio : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +17,10 @@ class CriarAnuncio : AppCompatActivity() {
         setContentView(R.layout.criar_anuncio)
 
         val setaBack = findViewById<ImageView>(R.id.setaBack)
+
+
+
+
 
         val categorias = arrayOf("Esportes", "Games", "Eletronicos", "Roupas", "Brinquedos", "Outros")
 
@@ -47,6 +45,8 @@ class CriarAnuncio : AppCompatActivity() {
     private val pickerMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         val imgView = findViewById<ImageView>(R.id.imgView)
         imgView.setImageURI(uri)
+        val textAdicionarImg = findViewById<TextView>(R.id.textAdicionarImg)
+        textAdicionarImg.setText("")
     }
 
     private fun replaceFragment(fragment : Fragment) {
