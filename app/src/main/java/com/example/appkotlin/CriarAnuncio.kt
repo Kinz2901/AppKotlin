@@ -4,10 +4,13 @@ package com.example.appkotlin
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils.replace
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.ImageView
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
@@ -28,14 +31,24 @@ class CriarAnuncio : AppCompatActivity() {
         val adapterItems = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, categorias)
         autoCompleteTxt.setAdapter(adapterItems)
 
+        val imgView = findViewById<ImageView>(R.id.imgView)
+
+        imgView.setOnClickListener{
+            pickerMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+        }
 
         setaBack.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("showFragment", "AddItemFragment")
             startActivity(intent)
         }
-
     }
+
+    private val pickerMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+        val imgView = findViewById<ImageView>(R.id.imgView)
+        imgView.setImageURI(uri)
+    }
+
     private fun replaceFragment(fragment : Fragment) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
