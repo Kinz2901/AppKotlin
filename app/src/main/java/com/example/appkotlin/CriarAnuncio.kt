@@ -45,8 +45,8 @@ class CriarAnuncio : AppCompatActivity() {
     private val pickerMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         val imgView = findViewById<ImageView>(R.id.imgView)
         imgView.setImageURI(uri)
-        val textAdicionarImg = findViewById<TextView>(R.id.textAdicionarImg)
-        textAdicionarImg.setText("")
+        //val textAdicionarImg = findViewById<TextView>(R.id.textAdicionarImg)
+        //textAdicionarImg.setText("")
     }
 
     private fun replaceFragment(fragment : Fragment) {

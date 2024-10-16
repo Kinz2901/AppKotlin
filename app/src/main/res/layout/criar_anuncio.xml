@@ -11,42 +11,43 @@
     tools:layout_editor_absoluteY="296dp"
     android:background="#1C1C1C">
 
-  <ImageView
-      android:id="@+id/imgView"
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/linearLayout"
       android:layout_width="match_parent"
       android:layout_height="262dp"
       android:background="#D9D9D9"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@drawable/adicionar" />
+      app:layout_constraintTop_toTopOf="parent">
 
-  <TextView
-      android:id="@+id/textAdicionarImg"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Adicionar Imagem"
-      android:textSize="20dp"
-      app:layout_constraintBottom_toBottomOf="@+id/imgView"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.501"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/imgView"
-      app:layout_constraintVertical_bias="0.685" />
+    <ImageView
+        android:clickable="true"
+        android:id="@+id/imgView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/adicionar">
+    </ImageView>
 
-  <ImageButton
-      android:id="@+id/setaBack"
-      android:layout_width="60dp"
-      android:layout_height="60dp"
-      android:layout_marginStart="20dp"
-      android:layout_marginTop="20dp"
-      android:background="@drawable/arredondado"
-      android:padding="14dp"
-      android:scaleType="centerInside"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@drawable/seta_back" />
+    <ImageButton
+        android:clickable="true"
+        android:id="@+id/setaBack"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/arredondado"
+        android:padding="14dp"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/seta_back" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
 
   <TextView
       android:id="@+id/textView2"
@@ -58,7 +59,8 @@
       android:text="Nome do produto:"
       android:textColor="@color/white"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/imgView" />
+      app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+      app:layout_constraintVertical_bias="0.0" />
 
   <EditText
       android:id="@+id/campoNameProduct"
