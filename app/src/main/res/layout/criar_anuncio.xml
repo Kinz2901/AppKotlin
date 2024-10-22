@@ -56,7 +56,7 @@
       android:layout_height="wrap_content"
       android:layout_marginStart="40dp"
       android:layout_marginTop="40dp"
-      android:labelFor="@+id/campoNameProduct"
+      android:labelFor="@+id/nameProduct"
       android:text="Nome do produto:"
       android:textColor="@color/white"
       app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
       app:layout_constraintVertical_bias="0.0" />
 
   <EditText
-      android:id="@+id/campoNameProduct"
+      android:id="@+id/nameProduct"
       android:layout_width="match_parent"
       android:layout_height="48dp"
       android:layout_marginStart="40dp"
@@ -88,14 +88,13 @@
       android:text="Descrição:"
       android:textColor="@color/white"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/campoNameProduct" />
+      app:layout_constraintTop_toBottomOf="@+id/nameProduct" />
 
   <EditText
-      android:id="@+id/editTextTextMultiLine2"
+      android:id="@+id/descriptionProduct"
       android:layout_width="match_parent"
       android:layout_height="100dp"
-      android:paddingLeft="20dp"
-      android:paddingRight="20dp"
+      android:padding="20dp"
       android:layout_marginStart="40dp"
       android:layout_marginTop="20dp"
       android:layout_marginEnd="40dp"
@@ -118,7 +117,7 @@
       android:backgroundTint="@color/white"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine2">
+      app:layout_constraintTop_toBottomOf="@+id/descriptionProduct">
 
     <TextView
         android:id="@+id/labelPreco"
@@ -130,7 +129,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/campoPrecoProduct"
+        android:id="@+id/priceProduct"
         android:layout_width="154dp"
         android:layout_height="48dp"
         android:paddingLeft="20dp"
@@ -153,7 +152,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/campoQuant"
+        android:id="@+id/quantProduct"
         android:layout_width="154dp"
         android:layout_height="48dp"
         android:paddingLeft="20dp"
@@ -204,7 +203,7 @@
   </com.google.android.material.textfield.TextInputLayout>
 
   <Button
-      android:id="@+id/button3"
+      android:id="@+id/btnPublicarAnuncio"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginStart="40dp"

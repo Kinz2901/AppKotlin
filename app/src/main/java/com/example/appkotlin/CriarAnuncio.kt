@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.PickVisualMediaRequest
@@ -17,19 +19,24 @@ class CriarAnuncio : AppCompatActivity() {
         setContentView(R.layout.criar_anuncio)
 
         val setaBack = findViewById<ImageView>(R.id.setaBack)
-
-
-
-
-
         val categorias = arrayOf("Esportes", "Games", "Eletronicos", "Roupas", "Brinquedos", "Outros")
-
         val autoCompleteTxt: AutoCompleteTextView = findViewById(R.id.autoCompleteTxt)
-
         val adapterItems = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, categorias)
         autoCompleteTxt.setAdapter(adapterItems)
-
         val imgView = findViewById<ImageView>(R.id.imgView)
+        var nameProduct = findViewById<EditText>(R.id.nameProduct)
+        var descriptionProduct = findViewById<EditText>(R.id.descriptionProduct)
+        var priceProduct = findViewById<EditText>(R.id.priceProduct)
+        var quantProduct = findViewById<EditText>(R.id.quantProduct)
+        var btnPublicarAnuncio = findViewById<Button>(R.id.btnPublicarAnuncio)
+
+        btnPublicarAnuncio.setOnClickListener{
+            println(nameProduct.text)
+            println(descriptionProduct.text)
+            println(priceProduct.text)
+            println(quantProduct.text)
+        }
+
 
         imgView.setOnClickListener{
             pickerMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
