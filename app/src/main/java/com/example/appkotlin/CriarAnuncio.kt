@@ -12,8 +12,10 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.appkotlin.model.Product
 
 class CriarAnuncio : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.criar_anuncio)
@@ -37,7 +39,6 @@ class CriarAnuncio : AppCompatActivity() {
             println(quantProduct.text)
 
             val produtoPostado = Intent( this, MainActivity::class.java)
-            produtoPostado.putExtra("name", "${nameProduct.text}")
             startActivity(produtoPostado)
         }
 
