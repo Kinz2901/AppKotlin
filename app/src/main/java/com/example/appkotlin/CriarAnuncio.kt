@@ -35,6 +35,10 @@ class CriarAnuncio : AppCompatActivity() {
             println(descriptionProduct.text)
             println(priceProduct.text)
             println(quantProduct.text)
+
+            val produtoPostado = Intent( this, MainActivity::class.java)
+            produtoPostado.putExtra("name", "${nameProduct.text}")
+            startActivity(produtoPostado)
         }
 
 

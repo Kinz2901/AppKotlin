@@ -28,9 +28,39 @@
             android:drawableRight="@drawable/search"
             android:textColorHint="#808080" />
 
-
-
     </LinearLayout>
+    <TextView
+        android:id="@+id/nameNewProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nome do produto"
+        android:textColor="@color/white"
+        android:layout_margin="20dp"
+        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/descriptionProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descrição do produto"
+        android:textColor="@color/white"
+        android:layout_margin="20dp"
+        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/priceProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Preço do produto"
+        android:textColor="@color/white"
+        android:layout_margin="20dp"
+        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/quantProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quantidade do produto"
+        android:textColor="@color/white"
+        android:layout_margin="20dp"
+        android:textSize="20sp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_margin="20dp"
