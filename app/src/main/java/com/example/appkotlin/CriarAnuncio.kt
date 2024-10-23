@@ -1,5 +1,4 @@
 package com.example.appkotlin
-
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -7,12 +6,10 @@ import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.appkotlin.model.Product
 
 class CriarAnuncio : AppCompatActivity() {
 
@@ -26,24 +23,23 @@ class CriarAnuncio : AppCompatActivity() {
         val adapterItems = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, categorias)
         autoCompleteTxt.setAdapter(adapterItems)
         val imgView = findViewById<ImageView>(R.id.imgView)
-        var nameProduct = findViewById<EditText>(R.id.nameProduct)
-        var descriptionProduct = findViewById<EditText>(R.id.descriptionProduct)
-        var priceProduct = findViewById<EditText>(R.id.priceProduct)
-        var quantProduct = findViewById<EditText>(R.id.quantProduct)
-        var btnPublicarAnuncio = findViewById<Button>(R.id.btnPublicarAnuncio)
+        val nameProduct = findViewById<EditText>(R.id.nameProduct)
+        val descriptionProduct = findViewById<EditText>(R.id.descriptionProduct)
+        val priceProduct = findViewById<EditText>(R.id.priceProduct)
+        val quantProduct = findViewById<EditText>(R.id.quantProduct)
+        val btnPublicarAnuncio = findViewById<Button>(R.id.btnPublicarAnuncio)
 
         btnPublicarAnuncio.setOnClickListener{
-            println(nameProduct.text)
-            println(descriptionProduct.text)
-            println(priceProduct.text)
-            println(quantProduct.text)
+            val name = nameProduct.text.toString()
+            val price = priceProduct.text
+            val img = imgView.drawable
+            val desc = descriptionProduct.text
+            val quant = quantProduct.text
 
-            val produtoPostado = Intent( this, MainActivity::class.java)
-            startActivity(produtoPostado)
         }
 
 
-        imgView.setOnClickListener{
+        imgView.setOnClickListener {
             pickerMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
 
@@ -67,5 +63,7 @@ class CriarAnuncio : AppCompatActivity() {
         fragmentTransaction.replace(R.id.frameLayout,fragment)
         fragmentTransaction.commit()
     }
+
+
 
 }

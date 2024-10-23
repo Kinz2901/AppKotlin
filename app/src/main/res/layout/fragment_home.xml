@@ -62,10 +62,16 @@
         android:layout_margin="20dp"
         android:textSize="20sp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_margin="20dp"
-        android:id="@+id/mRecycler"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="94dp" />
+        android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mRecycler"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="94dp" />
+    </LinearLayout>
+
 
 </LinearLayout>
