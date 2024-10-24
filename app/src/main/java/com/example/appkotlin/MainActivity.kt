@@ -15,18 +15,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val fragmentToShow = intent.getStringExtra("showFragment")
+
         if (fragmentToShow == "AddItemFragment") {
             replaceFragment(AddItemFragment())
         } else {
             replaceFragment(HomeFragment())
         }
-
-
-        val nameNewProduct = findViewById<TextView>(R.id.nameNewProduct)
-
-       
-
-
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
@@ -38,11 +32,9 @@ class MainActivity : AppCompatActivity() {
 
                 else -> {
 
-
                 }
 
             }
-
             true
         }
 

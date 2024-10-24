@@ -30,12 +30,14 @@ class CriarAnuncio : AppCompatActivity() {
         val btnPublicarAnuncio = findViewById<Button>(R.id.btnPublicarAnuncio)
 
         btnPublicarAnuncio.setOnClickListener{
-            val name = nameProduct.text.toString()
-            val price = priceProduct.text
+            val newNome = nameProduct.text.toString()
+            val newPrice = priceProduct.text
             val img = imgView.drawable
             val desc = descriptionProduct.text
             val quant = quantProduct.text
 
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
 
@@ -44,26 +46,13 @@ class CriarAnuncio : AppCompatActivity() {
         }
 
         setaBack.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("showFragment", "AddItemFragment")
-            startActivity(intent)
+            finish()
         }
     }
 
     private val pickerMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         val imgView = findViewById<ImageView>(R.id.imgView)
         imgView.setImageURI(uri)
-        //val textAdicionarImg = findViewById<TextView>(R.id.textAdicionarImg)
-        //textAdicionarImg.setText("")
     }
-
-    private fun replaceFragment(fragment : Fragment) {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frameLayout,fragment)
-        fragmentTransaction.commit()
-    }
-
-
 
 }
