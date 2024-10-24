@@ -30,13 +30,13 @@
 
     </LinearLayout>
     <TextView
-        android:id="@+id/nameNewProduct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nome do produto"
-        android:textColor="@color/white"
-        android:layout_margin="20dp"
-        android:textSize="20sp"/>
+    android:id="@+id/nameNewProduct"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Nome do produto"
+    android:textColor="@color/white"
+    android:layout_margin="20dp"
+    android:textSize="20sp"/>
     <TextView
         android:id="@+id/descriptionProduct"
         android:layout_width="match_parent"
@@ -46,7 +46,7 @@
         android:layout_margin="20dp"
         android:textSize="20sp"/>
     <TextView
-        android:id="@+id/priceProduct"
+        android:id="@+id/priceNewProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Preço do produto"
@@ -62,6 +62,11 @@
         android:layout_margin="20dp"
         android:textSize="20sp"/>
 
+    <Button
+        android:id="@+id/btnTest"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:text="Buttao"/>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

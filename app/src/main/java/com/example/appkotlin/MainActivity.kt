@@ -11,23 +11,16 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val fragmentToShow = intent.getStringExtra("showFragment")
+
         if (fragmentToShow == "AddItemFragment") {
             replaceFragment(AddItemFragment())
         } else {
             replaceFragment(HomeFragment())
         }
-
-
-        val nameNewProduct = findViewById<TextView>(R.id.nameNewProduct)
-
-       
-
-
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
@@ -39,11 +32,9 @@ class MainActivity : AppCompatActivity() {
 
                 else -> {
 
-
                 }
 
             }
-
             true
         }
 
