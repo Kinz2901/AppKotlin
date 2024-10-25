@@ -7,36 +7,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.appkotlin.model.Produto
 
 class HomeFragment : Fragment() {
     private lateinit var nameNewProductTextView: TextView
-
-    companion object {
-        private const val ARG_PARAM1 = "nome"
-        private const val ARG_PARAM2 = "price"
-
-        fun newInstance(param1: String, param2: Double): HomeFragment {
-            val fragment = HomeFragment()
-            val args = Bundle()
-            args.putString(ARG_PARAM1, param1)
-            args.putDouble(ARG_PARAM2, param2)
-            fragment.arguments = args
-            return fragment
-        }
-    }
+    private val produtos: MutableList<Produto> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val produto = Produto(
+            imagem = "https://example.com/imagem.jpg",
+            nome = "Produto Exemplo",
+            descricao = "Este é um exemplo de descrição do produto.",
+            preco = 49.99,
+            quantidade = 10,
+            categoria = "Eletrônicos"
+        )
+        produtos.add(produto)
+        return view
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val nome = arguments?.getString(ARG_PARAM1)
-        val price = arguments?.getDouble(ARG_PARAM2)
 
         nameNewProductTextView = view.findViewById(R.id.nameNewProduct)
     }
