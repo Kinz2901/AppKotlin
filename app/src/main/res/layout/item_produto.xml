@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="400dp">
             <ImageView
-                android:id="@+id/imgProduct"
+                android:id="@+id/imagem"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:scaleType="centerCrop"
@@ -50,7 +50,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/nameProduct"
+                    android:id="@+id/nome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Title"
@@ -59,7 +59,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/priceProduct"
+                    android:id="@+id/preco"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -75,7 +75,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/priceProduct"
+                    android:id="@+id/categoria"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
