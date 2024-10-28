@@ -7,22 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import com.example.appkotlin.model.Produto
-import com.example.appkotlin.view.ProdutoAdapter
 
 class HomeFragment : Fragment() {
-    private lateinit var recyclerView: RecyclerView
     private lateinit var nameNewProductTextView: TextView
     private val produtos: MutableList<Produto> = mutableListOf()
-    private lateinit var adapter: ProdutoAdapter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        adapter = ProdutoAdapter(mutableListOf())
-        recyclerView.adapter = adapter
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,20 +19,24 @@ class HomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         // Inflate the layout for this fragment
-        val product = Produto(
+        val produto = Produto(
+            imagem = "https://example.com/imagem.jpg",
             nome = "Produto Exemplo",
-            preco = "49.99",
+            descricao = "Este é um exemplo de descrição do produto.",
+            preco = 49.99,
+            quantidade = 10,
             categoria = "Eletrônicos"
         )
-        produtos.add(product)
-
-        adapter.notifyItemInserted(produtos.size - 1)
+        produtos.add(produto)
         return view
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         nameNewProductTextView = view.findViewById(R.id.nameNewProduct)
+    }
+    fun updateText(newNome: String) {
+        println(newNome)
     }
 
 }
