@@ -27,8 +27,14 @@ class HomeFragment : Fragment() {
 
         lista = view.findViewById(R.id.mRecycler)
         val produtos = listOf(
-            Produto("PlayStation 5", "3.999,99", "Games"),
-            Produto("Chuteira Nike Beco Futsal", "299,99", "Esporte"),
+            Produto(R.drawable.ps5,
+                "PlayStation 5",
+                "R$ 3.999,99",
+                "Games"),
+            Produto(R.drawable.chuteita_nike,
+                "Chuteira Nike Beco Futsal",
+                "R$ 299,99",
+                "Esporte"),
         )
         val adapter = ProdutoAdapter(produtos)
         lista.adapter = adapter
