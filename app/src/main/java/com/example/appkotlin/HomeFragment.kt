@@ -13,23 +13,6 @@ class HomeFragment : Fragment() {
     private lateinit var nameNewProductTextView: TextView
     private val produtos: MutableList<Produto> = mutableListOf()
 
-class HomeFragment : Fragment() {
-    private lateinit var nameNewProductTextView: TextView
-
-    companion object {
-        private const val ARG_PARAM1 = "nome"
-        private const val ARG_PARAM2 = "price"
-
-        fun newInstance(param1: String, param2: Double): HomeFragment {
-            val fragment = HomeFragment()
-            val args = Bundle()
-            args.putString(ARG_PARAM1, param1)
-            args.putDouble(ARG_PARAM2, param2)
-            fragment.arguments = args
-            return fragment
-        }
-    }
-}
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
