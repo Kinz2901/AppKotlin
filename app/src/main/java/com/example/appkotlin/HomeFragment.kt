@@ -7,11 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.appkotlin.model.Produto
+import com.example.appkotlin.view.ProdutoAdapter
 
 class HomeFragment : Fragment() {
     private lateinit var nameNewProductTextView: TextView
-    private val produtos: MutableList<Produto> = mutableListOf()
+    private lateinit var lista: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,7 +24,15 @@ class HomeFragment : Fragment() {
         return view
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        nameNewProductTextView = view.findViewById(R.id.nameNewProduct)
+
+        lista = view.findViewById(R.id.mRecycler)
+        val produtos = listOf(
+            Produto("PlayStation 5", "3.999,99", "Games"),
+            Produto("Chuteira Nike Beco Futsal", "299,99", "Esporte"),
+        )
+        val adapter = ProdutoAdapter(produtos)
+        lista.adapter = adapter
+        lista.layoutManager = LinearLayoutManager(requireContext())
 
     }
 
