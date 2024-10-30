@@ -1,6 +1,6 @@
 package com.example.appkotlin.model
 
-data class Produto(     // URL ou caminho da imagem
+data class Produto(   
     val imagem: Int,
     val nome: String,
     val preco: String,

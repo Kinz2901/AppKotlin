@@ -1,6 +1,7 @@
 package com.example.appkotlin
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils.replace
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
@@ -9,6 +10,7 @@ import android.widget.ImageView
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 
 class CriarAnuncio : AppCompatActivity() {
@@ -37,11 +39,20 @@ class CriarAnuncio : AppCompatActivity() {
             val quant = quantProduct.text
 
             val fragment = HomeFragment()
-            supportFragmentManager.beginTransaction()
+
+            val bundle = bundleOf(
+                "imagem" to R.drawable.megafone,
+                "nome" to "Teste",
+                "preco" to "Valor Teste",
+                "categoria" to "Categoria Teste"
+            )
+
+            fragment.arguments = bundle
+
+            supportFragmentManager
+                .beginTransaction()
                 .replace(R.id.frameLayout, fragment)
                 .commit()
-            val homeFragment = supportFragmentManager.findFragmentById(R.id.frameLayout) as? HomeFragment
-            homeFragment?.adicionarProduto(R.drawable.megafone, "Megafone", "R$ 70.00","Objeto")
 
         }
 

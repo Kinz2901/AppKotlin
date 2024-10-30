@@ -19,6 +19,24 @@ class HomeFragment : Fragment() {
     )
     private lateinit var lista: RecyclerView
 
+    private var imagem: Int? = null
+    private var nome: String? = null
+    private var preco: String? = null
+    private var categoria: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        imagem = arguments?.getInt("imagem")
+        nome = arguments?.getString("nome")
+        preco = arguments?.getString("preco")
+        categoria = arguments?.getString("categoria")
+        println(imagem)
+        println(nome)
+        println(preco)
+        println(categoria)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,11 +45,10 @@ class HomeFragment : Fragment() {
         return view
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val lista = view.findViewById<RecyclerView>(R.id.mRecycler)
+        lista = view.findViewById(R.id.mRecycler)
         adapter = ProdutoAdapter(produtos)
         lista.adapter = adapter
         lista.layoutManager = LinearLayoutManager(requireContext())
-        adicionarProduto(R.drawable.megafone, "Megafone", "R$ 70.00","Objeto")
     }
     fun adicionarProduto(imagem: Int, nome: String, preco: String, categoria: String) {
         val novoProduto = Produto(imagem, nome, preco, categoria)
