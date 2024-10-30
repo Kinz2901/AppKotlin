@@ -36,8 +36,13 @@ class CriarAnuncio : AppCompatActivity() {
             val desc = descriptionProduct.text
             val quant = quantProduct.text
 
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            val fragment = HomeFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.frameLayout, fragment)
+                .commit()
+            val homeFragment = supportFragmentManager.findFragmentById(R.id.frameLayout) as? HomeFragment
+            homeFragment?.adicionarProduto(R.drawable.megafone, "Megafone", "R$ 70.00","Objeto")
+
         }
 
 

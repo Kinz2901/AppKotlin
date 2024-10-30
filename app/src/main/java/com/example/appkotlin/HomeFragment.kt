@@ -1,12 +1,10 @@
 package com.example.appkotlin
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appkotlin.model.Produto
@@ -33,7 +31,7 @@ class HomeFragment : Fragment() {
         adapter = ProdutoAdapter(produtos)
         lista.adapter = adapter
         lista.layoutManager = LinearLayoutManager(requireContext())
-
+        adicionarProduto(R.drawable.megafone, "Megafone", "R$ 70.00","Objeto")
     }
     fun adicionarProduto(imagem: Int, nome: String, preco: String, categoria: String) {
         val novoProduto = Produto(imagem, nome, preco, categoria)
