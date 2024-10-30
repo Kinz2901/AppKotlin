@@ -31,10 +31,19 @@ class HomeFragment : Fragment() {
         nome = arguments?.getString("nome")
         preco = arguments?.getString("preco")
         categoria = arguments?.getString("categoria")
-        println(imagem)
-        println(nome)
-        println(preco)
-        println(categoria)
+        if (imagem != null) {
+            println(imagem)
+        }
+        if (nome != null) {
+            println(nome)
+        }
+        if (preco != null) {
+            println(preco)
+        }
+        if (categoria != null) {
+            println(categoria)
+        }
+
     }
 
     override fun onCreateView(
