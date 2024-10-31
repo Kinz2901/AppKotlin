@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.appkotlin.R
 import com.example.appkotlin.model.Produto
 
-class ProdutoAdapter(private val produtos: List<Produto>) : RecyclerView.Adapter<ProdutoAdapter.ProdutoViewHolder>() {
+class ProdutoAdapter(private val produtos: MutableList<Produto>) : RecyclerView.Adapter<ProdutoAdapter.ProdutoViewHolder>() {
 
     class ProdutoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imagem: ImageView = itemView.findViewById(R.id.imagem)

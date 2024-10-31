@@ -31,19 +31,9 @@ class HomeFragment : Fragment() {
         nome = arguments?.getString("nome")
         preco = arguments?.getString("preco")
         categoria = arguments?.getString("categoria")
-        if (imagem != null) {
-            println(imagem)
+        if (imagem != null && nome != null && preco != null && categoria != null) {
+            adicionarProduto(imagem!!, nome!!, preco!!, categoria!!)
         }
-        if (nome != null) {
-            println(nome)
-        }
-        if (preco != null) {
-            println(preco)
-        }
-        if (categoria != null) {
-            println(categoria)
-        }
-
     }
 
     override fun onCreateView(
@@ -60,8 +50,10 @@ class HomeFragment : Fragment() {
         lista.layoutManager = LinearLayoutManager(requireContext())
     }
     fun adicionarProduto(imagem: Int, nome: String, preco: String, categoria: String) {
+        println("Adicionando produto: $nome, $preco, $categoria")
         val novoProduto = Produto(imagem, nome, preco, categoria)
         produtos.add(novoProduto)
+        println("Quantidade de produtos: ${produtos.size}")
         adapter.notifyItemInserted(produtos.size - 1) // Atualiza a lista no RecyclerView
     }
 
