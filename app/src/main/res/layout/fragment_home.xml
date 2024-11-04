@@ -30,6 +30,11 @@
             android:textColorHint="#808080" />
 
     </LinearLayout>
+    <Button
+        android:id="@+id/btnAtualizar"
+        android:layout_width="160dp"
+        android:layout_height="80dp"
+        android:text="Atualizar"/>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

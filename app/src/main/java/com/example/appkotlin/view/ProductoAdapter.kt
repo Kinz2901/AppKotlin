@@ -11,9 +11,15 @@ import com.example.appkotlin.R
 import com.example.appkotlin.model.Produto
 
 class ProdutoAdapter(
-    private val produtos: MutableList<Produto>,
     private val clique: (String) -> Unit // Função lambda para o clique
 ) : RecyclerView.Adapter<ProdutoAdapter.ProdutoViewHolder>() {
+
+    private var listaProdutos = mutableListOf<Produto>()
+
+    fun atualizarListaProdutos( lista: MutableList<Produto>) {
+        listaProdutos = lista
+        notifyDataSetChanged()
+    }
 
     inner class ProdutoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imagem: ImageView = itemView.findViewById(R.id.imagem)
@@ -41,9 +47,9 @@ class ProdutoAdapter(
     }
 
     override fun onBindViewHolder(holder: ProdutoViewHolder, position: Int) {
-        val produto = produtos[position]
+        val produto = listaProdutos[position]
         holder.bind(produto)
     }
 
-    override fun getItemCount() = produtos.size
+    override fun getItemCount() = listaProdutos.size
 }

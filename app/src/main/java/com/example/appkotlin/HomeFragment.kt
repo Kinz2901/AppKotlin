@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ListView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,18 +15,18 @@ import com.example.appkotlin.model.Produto
 import com.example.appkotlin.view.ProdutoAdapter
 
 class HomeFragment : Fragment() {
-    private lateinit var adapter: ProdutoAdapter
+    private lateinit var produtoAdapter: ProdutoAdapter
 
     private lateinit var lista: RecyclerView
+    private lateinit var btnAtualizar: Button
 
     private var imagem: Int? = null
     private var nome: String? = null
     private var preco: String? = null
     private var categoria: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    override fun onStart() {
+        super.onStart()
 
     }
 
@@ -43,7 +44,8 @@ class HomeFragment : Fragment() {
             Produto(R.drawable.megafone, "Megafone", "R$ 70,00", "Objeto")
         )
         lista = view.findViewById(R.id.mRecycler)
-        lista.adapter = ProdutoAdapter(produtos) { nome ->
+        btnAtualizar = view.findViewById(R.id.btnAtualizar)
+        produtoAdapter = ProdutoAdapter { nome ->
             Toast.makeText(requireContext(), "Produto: $nome", Toast.LENGTH_SHORT).show()
             val intent = Intent(requireContext(), InspecionarProduto::class.java)
             intent.putExtra("nome", nome)
@@ -52,7 +54,18 @@ class HomeFragment : Fragment() {
                 intent
             )
         }
+        produtoAdapter.atualizarListaProdutos(
+            produtos
+        )
+        lista.adapter = produtoAdapter
         lista.layoutManager = LinearLayoutManager(requireContext())
+
+        btnAtualizar.setOnClickListener {
+            produtos.add(
+                Produto(R.drawable.megafone, "Megafone2", "R$ 70,00", "Objeto")
+            )
+            produtoAdapter.atualizarListaProdutos( produtos )
+        }
     }
 
 }
