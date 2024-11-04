@@ -5,17 +5,34 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appkotlin.R
 import com.example.appkotlin.model.Produto
 
-class ProdutoAdapter(private val produtos: MutableList<Produto>) : RecyclerView.Adapter<ProdutoAdapter.ProdutoViewHolder>() {
+class ProdutoAdapter(
+    private val produtos: MutableList<Produto>,
+    private val clique: () -> Unit // Função lambda para o clique
+) : RecyclerView.Adapter<ProdutoAdapter.ProdutoViewHolder>() {
 
-    class ProdutoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ProdutoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imagem: ImageView = itemView.findViewById(R.id.imagem)
         val nome: TextView = itemView.findViewById(R.id.nome)
         val preco: TextView = itemView.findViewById(R.id.preco)
         val categoria: TextView = itemView.findViewById(R.id.categoria)
+        val cardView: CardView = itemView.findViewById(R.id.cardView)
+
+        fun bind(produto: Produto) {
+            imagem.setImageResource(produto.imagem)
+            nome.text = produto.nome
+            preco.text = produto.preco
+            categoria.text = produto.categoria
+
+            // Chama a função clique ao clicar no cardView
+            cardView.setOnClickListener {
+                clique()
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProdutoViewHolder {
@@ -25,11 +42,7 @@ class ProdutoAdapter(private val produtos: MutableList<Produto>) : RecyclerView.
 
     override fun onBindViewHolder(holder: ProdutoViewHolder, position: Int) {
         val produto = produtos[position]
-        holder.imagem.setImageResource(produto.imagem)
-        holder.nome.text = produto.nome
-        holder.preco.text = produto.preco
-        holder.categoria.text = produto.categoria
-        // Configure outros campos do produto
+        holder.bind(produto)
     }
 
     override fun getItemCount() = produtos.size
