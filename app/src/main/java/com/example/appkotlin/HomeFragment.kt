@@ -43,9 +43,13 @@ class HomeFragment : Fragment() {
             Produto(R.drawable.megafone, "Megafone", "R$ 70,00", "Objeto")
         )
         lista = view.findViewById(R.id.mRecycler)
-        lista.adapter = ProdutoAdapter(produtos) {
+        lista.adapter = ProdutoAdapter(produtos) { nome ->
+            Toast.makeText(requireContext(), "Produto: $nome", Toast.LENGTH_SHORT).show()
+            val intent = Intent(requireContext(), InspecionarProduto::class.java)
+            intent.putExtra("nome", nome)
+
             startActivity(
-                Intent(requireContext(), InspecionarProduto::class.java)
+                intent
             )
         }
         lista.layoutManager = LinearLayoutManager(requireContext())
