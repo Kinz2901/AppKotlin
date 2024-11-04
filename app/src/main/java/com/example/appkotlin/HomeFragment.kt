@@ -25,11 +25,6 @@ class HomeFragment : Fragment() {
     private var preco: String? = null
     private var categoria: String? = null
 
-    override fun onStart() {
-        super.onStart()
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -62,6 +57,7 @@ class HomeFragment : Fragment() {
 
         btnAtualizar.setOnClickListener {
             produtos.add(
+                0,
                 Produto(R.drawable.megafone, "Megafone2", "R$ 70,00", "Objeto")
             )
             produtoAdapter.atualizarListaProdutos( produtos )
