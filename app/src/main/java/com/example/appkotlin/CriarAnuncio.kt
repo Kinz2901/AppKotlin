@@ -72,10 +72,11 @@ class CriarAnuncio : AppCompatActivity() {
             "quantidade" to "12"
         )
 
-        bancoDados
+        val produtos = bancoDados
             .collection("produtos")
-            .document("2")
-            .set( produto )
+
+        produtos
+            .add(produto)
             .addOnSuccessListener {
                 exibirMensagem("Produto salvo com sucesso")
             }.addOnFailureListener{ exception ->
