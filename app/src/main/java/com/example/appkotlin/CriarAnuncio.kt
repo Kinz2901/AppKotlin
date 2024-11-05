@@ -76,7 +76,7 @@ class CriarAnuncio : AppCompatActivity() {
             .set( produto )
             .addOnSuccessListener {
                 exibirMensagem("Produto salvo com sucesso")
-            }.addOnFailureListener{
+            }.addOnFailureListener{ exception ->
                 exibirMensagem("Erro ao salvar produto")
             }
     }
