@@ -7,13 +7,19 @@ import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import com.google.firebase.firestore.FirebaseFirestore
 
 class CriarAnuncio : AppCompatActivity() {
+
+    private val bancoDados by lazy {
+        FirebaseFirestore.getInstance()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,21 +44,7 @@ class CriarAnuncio : AppCompatActivity() {
             val desc = descriptionProduct.text
             val quant = quantProduct.text
 
-            val fragment = HomeFragment()
-
-            val bundle = bundleOf(
-                "imagem" to R.drawable.megafone,
-                "nome" to "Teste",
-                "preco" to "Valor Teste",
-                "categoria" to "Categoria Teste"
-            )
-
-            fragment.arguments = bundle
-
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.frameLayout, fragment)
-                .commit()
+            salvarDados()
 
         }
 
@@ -69,6 +61,27 @@ class CriarAnuncio : AppCompatActivity() {
     private val pickerMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         val imgView = findViewById<ImageView>(R.id.imgView)
         imgView.setImageURI(uri)
+    }
+
+    private fun salvarDados() {
+
+        val produto = mapOf(
+            "nome" to "TesteNome",
+            "idade" to "35"
+        )
+
+        bancoDados
+            .collection("produtos")
+            .document("1")
+            .set( produto )
+            .addOnSuccessListener {
+                exibirMensagem("Produto salvo com sucesso")
+            }.addOnFailureListener{
+                exibirMensagem("Erro ao salvar produto")
+            }
+    }
+    private fun exibirMensagem(texto: String) {
+        Toast.makeText(this, texto, Toast.LENGTH_LONG).show()
     }
 
 }
