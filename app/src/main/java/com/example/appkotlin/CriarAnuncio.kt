@@ -67,12 +67,14 @@ class CriarAnuncio : AppCompatActivity() {
 
         val produto = mapOf(
             "nome" to "TesteNome",
-            "idade" to "35"
+            "preço" to "R$ 3.999,00",
+            "descrição" to "Video Game para jogar online ou local com seus amigos!",
+            "quantidade" to "12"
         )
 
         bancoDados
             .collection("produtos")
-            .document("1")
+            .document("2")
             .set( produto )
             .addOnSuccessListener {
                 exibirMensagem("Produto salvo com sucesso")

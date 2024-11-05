@@ -28,7 +28,7 @@ class AddItemFragment : Fragment() {
             startActivity(intent)
         }
         buttonMeusAnuncios.setOnClickListener {
-            val intent = Intent(requireContext(), CriarAnuncio::class.java)
+            val intent = Intent(requireContext(), MeusAnuncios::class.java)
             startActivity(intent)
         }
 

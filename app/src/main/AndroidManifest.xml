@@ -15,6 +15,9 @@
         android:theme="@style/Theme.AppKotlin"
         tools:targetApi="31">
         <activity
+            android:name=".MeusAnuncios"
+            android:exported="false" />
+        <activity
             android:name=".InspecionarProduto"
             android:exported="false" />
         <activity
