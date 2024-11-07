@@ -13,6 +13,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class CriarAnuncio : AppCompatActivity() {
@@ -45,7 +46,6 @@ class CriarAnuncio : AppCompatActivity() {
             val quant = quantProduct.text
 
             salvarDados()
-
         }
 
 
@@ -83,6 +83,7 @@ class CriarAnuncio : AppCompatActivity() {
                 exibirMensagem("Erro ao salvar produto")
             }
     }
+
     private fun exibirMensagem(texto: String) {
         Toast.makeText(this, texto, Toast.LENGTH_LONG).show()
     }
