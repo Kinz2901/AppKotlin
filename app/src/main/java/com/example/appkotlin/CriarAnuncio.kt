@@ -1,9 +1,7 @@
 package com.example.appkotlin
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils.replace
-import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
@@ -19,15 +17,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class CriarAnuncio : AppCompatActivity() {
 
-    private val bancoDados by lazy { FirebaseFirestore.getInstance() }
-    var imageUri: Uri? = null
-
-    private val pickerMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
-        uri?.let {
-            imageUri = uri
-            val imgView = findViewById<ImageView>(R.id.imgView)
-            imgView.setImageURI(uri)
-        }
+    private val bancoDados by lazy {
+        FirebaseFirestore.getInstance()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,10 +27,9 @@ class CriarAnuncio : AppCompatActivity() {
 
         val setaBack = findViewById<ImageView>(R.id.setaBack)
         val categorias = arrayOf("Esportes", "Games", "Eletronicos", "Roupas", "Brinquedos", "Outros")
-        val autoCompleteText: AutoCompleteTextView = findViewById(R.id.autoCompleteTxt)
+        val autoCompleteTxt: AutoCompleteTextView = findViewById(R.id.autoCompleteTxt)
         val adapterItems = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, categorias)
-        autoCompleteText.setAdapter(adapterItems)
-
+        autoCompleteTxt.setAdapter(adapterItems)
         val imgView = findViewById<ImageView>(R.id.imgView)
         val nameProduct = findViewById<EditText>(R.id.nameProduct)
         val descriptionProduct = findViewById<EditText>(R.id.descriptionProduct)
@@ -47,16 +37,17 @@ class CriarAnuncio : AppCompatActivity() {
         val quantProduct = findViewById<EditText>(R.id.quantProduct)
         val btnPublicarAnuncio = findViewById<Button>(R.id.btnPublicarAnuncio)
 
-        btnPublicarAnuncio.setOnClickListener {
+        btnPublicarAnuncio.setOnClickListener{
             val nome = nameProduct.text.toString()
             val preco = priceProduct.text.toString().toDouble()
             val img = imgView.drawable
             val descricao = descriptionProduct.text.toString()
             val quantidade = quantProduct.text.toString().toInt()
-            val categoria = autoCompleteText.text.toString()  // Obter a categoria selecionada
 
-            salvarDados(nome, descricao, preco, quantidade, categoria)
+            salvarDados(nome, descricao, preco, quantidade)
+
         }
+
 
         imgView.setOnClickListener {
             pickerMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
@@ -67,6 +58,9 @@ class CriarAnuncio : AppCompatActivity() {
         }
     }
 
+    private val pickerMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+        val imgView = findViewById<ImageView>(R.id.imgView)
+        imgView.setImageURI(uri)
     }
 
     private fun salvarDados(nome: String, descricao: String, preco: Double, quantidade: Int) {
@@ -93,4 +87,5 @@ class CriarAnuncio : AppCompatActivity() {
     private fun exibirMensagem(texto: String) {
         Toast.makeText(this, texto, Toast.LENGTH_LONG).show()
     }
+
 }
