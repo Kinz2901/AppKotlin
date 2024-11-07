@@ -38,13 +38,13 @@ class CriarAnuncio : AppCompatActivity() {
         val btnPublicarAnuncio = findViewById<Button>(R.id.btnPublicarAnuncio)
 
         btnPublicarAnuncio.setOnClickListener{
-            val newNome = nameProduct.text.toString()
-            val newPrice = priceProduct.text
+            val nome = nameProduct.text.toString()
+            val preco = priceProduct.text.toString().toDouble()
             val img = imgView.drawable
-            val desc = descriptionProduct.text
-            val quant = quantProduct.text
+            val descricao = descriptionProduct.text.toString()
+            val quantidade = quantProduct.text.toString().toInt()
 
-            salvarDados()
+            salvarDados(nome, descricao, preco, quantidade)
 
         }
 
@@ -63,13 +63,14 @@ class CriarAnuncio : AppCompatActivity() {
         imgView.setImageURI(uri)
     }
 
-    private fun salvarDados() {
+    private fun salvarDados(nome: String, descricao: String, preco: Double, quantidade: Int) {
+
 
         val produto = mapOf(
-            "nome" to "TesteNome",
-            "preço" to "R$ 3.999,00",
-            "descrição" to "Video Game para jogar online ou local com seus amigos!",
-            "quantidade" to "12"
+            "nome" to nome,
+            "preço" to preco,
+            "descrição" to descricao,
+            "quantidade" to quantidade
         )
 
         val produtos = bancoDados
