@@ -31,7 +31,8 @@ class ProdutoAdapter(
         fun bind(produto: Produto) {
             imagem.setImageResource(produto.imagem)
             nome.text = produto.nome
-            preco.text = produto.preco
+            val precoConvertido = "R$ ${produto.preco}"
+            preco.text =  precoConvertido
             categoria.text = produto.categoria
 
             // Chama a função clique ao clicar no cardView
