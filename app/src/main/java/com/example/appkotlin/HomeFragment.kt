@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.appkotlin.model.Produto
 import com.example.appkotlin.view.ProdutoAdapter
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 
 class HomeFragment : Fragment() {
     private lateinit var produtoAdapter: ProdutoAdapter
@@ -21,6 +22,7 @@ class HomeFragment : Fragment() {
     private lateinit var lista: RecyclerView
     private lateinit var btnAtualizar: Button
 
+    private lateinit var eventoSnapshot: ListenerRegistration
     private val bancoDados by lazy {
         FirebaseFirestore.getInstance()
     }
@@ -30,6 +32,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+        lista = view.findViewById(R.id.mRecycler)
         return view
     }
 
@@ -40,23 +43,28 @@ class HomeFragment : Fragment() {
     }
 
     private fun adicionarListenerContatos() {
-        bancoDados
+        eventoSnapshot = bancoDados
             .collection("produtos")
             .addSnapshotListener { querySnapshot, error ->
+                val listaProdutos = mutableListOf<Produto>()
                 val documentos = querySnapshot?.documents
                 documentos?.forEach { documentSnapshot ->
 
                     val produto = documentSnapshot.toObject( Produto::class.java )
-
                     if( produto != null ) {
-                        Log.i("fragment_home", "nome: ${produto.nome}")
+                        listaProdutos.add(
+                            0,
+                            produto )
                     }
                 }
+                  //Lista de produtos (atualizar o RecyclerView)
+
             }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        eventoSnapshot.remove()
     }
 
 }
