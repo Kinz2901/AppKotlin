@@ -77,8 +77,8 @@ class CriarAnuncio : AppCompatActivity() {
 
         val produto = mapOf(
             "nome" to nome,
-            "preço" to preco,
-            "descrição" to descricao,
+            "preco" to preco,
+            "descricao" to descricao,
             "quantidade" to quantidade,
             "categoria" to categoria
         )
