@@ -10,6 +10,7 @@
     tools:context=".MainActivity"
     app:cardBackgroundColor="@color/background"
     android:layout_marginBottom="20dp"
+    app:cardCornerRadius="16dp"
     >
     <LinearLayout
         android:orientation="vertical"
