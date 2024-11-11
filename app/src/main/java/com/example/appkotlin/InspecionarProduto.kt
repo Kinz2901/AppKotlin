@@ -1,6 +1,9 @@
 package com.example.appkotlin
 
+import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -14,10 +17,6 @@ class InspecionarProduto : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-
-
-
-
         setContentView(R.layout.activity_inspecionar_produto)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -26,6 +25,7 @@ class InspecionarProduto : AppCompatActivity() {
         }
 
     }
+
     override fun onStart() {
         super.onStart()
 
@@ -53,6 +53,10 @@ class InspecionarProduto : AppCompatActivity() {
         newDescricao.text = descricao
         val strQuant = quantidade.toString()
         newQuantidade.text = "Quantidades disponíveis: $strQuant"
+        val setaBack = findViewById<ImageView>(R.id.setaBack)
 
+        setaBack.setOnClickListener {
+            finish()
+        }
     }
 }
