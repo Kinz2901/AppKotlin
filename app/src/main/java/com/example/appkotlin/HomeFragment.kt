@@ -20,7 +20,6 @@ class HomeFragment : Fragment() {
     private lateinit var produtoAdapter: ProdutoAdapter
 
     private lateinit var lista: RecyclerView
-    private lateinit var btnAtualizar: Button
 
     private lateinit var eventoSnapshot: ListenerRegistration
     private val bancoDados by lazy {
@@ -33,6 +32,13 @@ class HomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         lista = view.findViewById(R.id.mRecycler)
+        lista.layoutManager = LinearLayoutManager(context)
+        // Inicializa o ProdutoAdapter e define o Adapter no RecyclerView
+        produtoAdapter = ProdutoAdapter { nomeProduto ->
+            // Função de clique no item, se precisar
+        }
+        lista.adapter = produtoAdapter
+        lista.layoutManager = LinearLayoutManager(context)
         return view
     }
 
@@ -57,7 +63,8 @@ class HomeFragment : Fragment() {
                             produto )
                     }
                 }
-                  //Lista de produtos (atualizar o RecyclerView)
+                // Atualiza a lista no adapter e notifica o RecyclerView
+                produtoAdapter.atualizarListaProdutos(listaProdutos)
 
             }
     }
