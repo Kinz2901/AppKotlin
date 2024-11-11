@@ -39,6 +39,12 @@ class HomeFragment : Fragment() {
         produtoAdapter = ProdutoAdapter { produto ->
             exibirMensagem("Clicou em: $produto ")
             val intent = Intent(requireContext(), InspecionarProduto::class.java)
+            intent.putExtra("Imagem", produto.imagemUrl)
+            intent.putExtra("Nome", produto.nome)
+            intent.putExtra("Preco", produto.preco.toString())
+            intent.putExtra("Descricao", produto.descricao)
+            intent.putExtra("Categoria", produto.categoria)
+            intent.putExtra("Quantidade", produto.quantidade.toString())
             startActivity(intent)
         }
         lista.adapter = produtoAdapter
