@@ -28,8 +28,12 @@
             android:textColor="#808080"
             android:drawableRight="@drawable/search"
             android:textColorHint="#808080" />
-
     </LinearLayout>
+    <Button
+        android:id="@+id/btnFiltrar"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:text="filtrar"/>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

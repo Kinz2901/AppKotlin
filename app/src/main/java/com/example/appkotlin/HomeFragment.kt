@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -39,7 +41,39 @@ class HomeFragment : Fragment() {
         }
         lista.adapter = produtoAdapter
         lista.layoutManager = LinearLayoutManager(context)
+
+        val campoSearch = view.findViewById<EditText>(R.id.campoSeach)
+
+        val btnFiltrar = view.findViewById<Button>(R.id.btnFiltrar)
+
+        btnFiltrar.setOnClickListener {
+            pesquisarProduto(campoSearch.text.toString())
+        }
+
         return view
+    }
+
+    private fun pesquisarProduto(filtro: String) {
+
+        eventoSnapshot = bancoDados
+            .collection("produtos")
+            .whereEqualTo("nome", "Goku MUI")
+            .addSnapshotListener { querySnapshot, error ->
+                val listaProdutos = mutableListOf<Produto>()
+                val documentos = querySnapshot?.documents
+                documentos?.forEach { documentSnapshot ->
+
+                    val produto = documentSnapshot.toObject( Produto::class.java )
+                    if( produto != null ) {
+                        listaProdutos.add(
+                            0,
+                            produto )
+                    }
+                }
+                // Atualiza a lista no adapter e notifica o RecyclerView
+                produtoAdapter.atualizarListaProdutos(listaProdutos)
+
+            }
     }
 
 
