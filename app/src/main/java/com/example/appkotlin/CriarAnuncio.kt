@@ -74,7 +74,6 @@ class CriarAnuncio : AppCompatActivity() {
 
     private fun salvarDados(nome: String, descricao: String, preco: Double, quantidade: Int, categoria: String) {
 
-
         val produto = mapOf(
             "nome" to nome,
             "preco" to preco,
