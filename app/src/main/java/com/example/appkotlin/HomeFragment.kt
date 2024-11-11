@@ -55,9 +55,11 @@ class HomeFragment : Fragment() {
 
     private fun pesquisarProduto(filtro: String) {
 
+        val prefixo = filtro
         eventoSnapshot = bancoDados
             .collection("produtos")
-            .whereEqualTo("nome", "Goku MUI")
+            .whereGreaterThanOrEqualTo("nome", prefixo)
+            .whereLessThan("nome", prefixo + "\uf8ff")
             .addSnapshotListener { querySnapshot, error ->
                 val listaProdutos = mutableListOf<Produto>()
                 val documentos = querySnapshot?.documents
