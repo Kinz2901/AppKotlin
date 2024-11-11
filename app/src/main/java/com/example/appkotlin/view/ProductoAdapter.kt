@@ -1,12 +1,15 @@
 package com.example.appkotlin.view
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.appkotlin.R
 import com.example.appkotlin.model.Produto
 
@@ -29,7 +32,11 @@ class ProdutoAdapter(
         val cardView: CardView = itemView.findViewById(R.id.cardView)
 
         fun bind(produto: Produto) {
-            imagem.setImageResource(produto.imagem)
+            val uri = produto.imagemUrl
+            Glide.with(imagem.context)
+                .load(uri)
+                .into(imagem)
+
             nome.text = produto.nome
             val precoConvertido = "R$ ${produto.preco}"
             preco.text =  precoConvertido
