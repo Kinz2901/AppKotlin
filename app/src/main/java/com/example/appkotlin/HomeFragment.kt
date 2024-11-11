@@ -44,22 +44,52 @@ class HomeFragment : Fragment() {
 
         val campoSearch = view.findViewById<EditText>(R.id.campoSeach)
 
-        val btnFiltrar = view.findViewById<Button>(R.id.btnFiltrar)
+        val btnFiltrarNome = view.findViewById<Button>(R.id.btnFiltrarNome)
+        val btnFiltrarCategoria = view.findViewById<Button>(R.id.btnFiltrarCategoria)
 
-        btnFiltrar.setOnClickListener {
-            pesquisarProduto(campoSearch.text.toString())
+        btnFiltrarNome.setOnClickListener {
+            filtrarNome(campoSearch.text.toString())
+        }
+
+        btnFiltrarCategoria.setOnClickListener {
+            filtrarCategoria(campoSearch.text.toString())
         }
 
         return view
     }
 
-    private fun pesquisarProduto(filtro: String) {
+    private fun filtrarNome(filtro: String) {
 
         val prefixo = filtro
         eventoSnapshot = bancoDados
             .collection("produtos")
             .whereGreaterThanOrEqualTo("nome", prefixo)
             .whereLessThan("nome", prefixo + "\uf8ff")
+            .addSnapshotListener { querySnapshot, error ->
+                val listaProdutos = mutableListOf<Produto>()
+                val documentos = querySnapshot?.documents
+                documentos?.forEach { documentSnapshot ->
+
+                    val produto = documentSnapshot.toObject( Produto::class.java )
+                    if( produto != null ) {
+                        listaProdutos.add(
+                            0,
+                            produto )
+                    }
+                }
+                // Atualiza a lista no adapter e notifica o RecyclerView
+                produtoAdapter.atualizarListaProdutos(listaProdutos)
+
+            }
+    }
+
+    private fun filtrarCategoria(filtro: String) {
+
+        val prefixo = filtro
+        eventoSnapshot = bancoDados
+            .collection("produtos")
+            .whereGreaterThanOrEqualTo("categoria", prefixo)
+            .whereLessThan("categoria", prefixo + "\uf8ff")
             .addSnapshotListener { querySnapshot, error ->
                 val listaProdutos = mutableListOf<Produto>()
                 val documentos = querySnapshot?.documents
