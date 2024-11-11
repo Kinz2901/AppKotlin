@@ -36,8 +36,10 @@ class HomeFragment : Fragment() {
         lista = view.findViewById(R.id.mRecycler)
         lista.layoutManager = LinearLayoutManager(context)
         // Inicializa o ProdutoAdapter e define o Adapter no RecyclerView
-        produtoAdapter = ProdutoAdapter { nomeProduto ->
-            // Função de clique no item, se precisar
+        produtoAdapter = ProdutoAdapter { produto ->
+            exibirMensagem("Clicou em: $produto ")
+            val intent = Intent(requireContext(), InspecionarProduto::class.java)
+            startActivity(intent)
         }
         lista.adapter = produtoAdapter
         lista.layoutManager = LinearLayoutManager(context)
@@ -138,6 +140,10 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         eventoSnapshot.remove()
+    }
+
+    private fun exibirMensagem(texto: String) {
+        Toast.makeText(requireContext(), texto, Toast.LENGTH_LONG).show()
     }
 
 }

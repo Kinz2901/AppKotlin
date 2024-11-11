@@ -14,7 +14,7 @@ import com.example.appkotlin.R
 import com.example.appkotlin.model.Produto
 
 class ProdutoAdapter(
-    private val clique: (String) -> Unit // Função lambda para o clique
+    private val clique: (Produto) -> Unit // Função lambda para o clique
 ) : RecyclerView.Adapter<ProdutoAdapter.ProdutoViewHolder>() {
 
     private var listaProdutos = mutableListOf<Produto>()
@@ -44,7 +44,7 @@ class ProdutoAdapter(
 
             // Chama a função clique ao clicar no cardView
             cardView.setOnClickListener {
-                clique( produto.nome )
+                clique( produto )
             }
         }
     }

@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ps5"/>
+                app:srcCompat="@drawable/padrao"/>
 
             <ImageButton
                 android:id="@+id/setaBack"
