@@ -13,6 +13,22 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        setContentView(R.layout.activity_main)
+
+        // Verifica se o usuário está logado
+        val sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+
+        if (!isLoggedIn) {
+            // Redireciona para a LoginActivity se o usuário não estiver logado
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish() // Finaliza a MainActivity para evitar que o usuário volte sem login
+        }
+
+        // Resto da lógica da MainActivity
+
         setContentView(R.layout.activity_main)
         val fragmentToShow = intent.getStringExtra("showFragment")
 
@@ -46,5 +62,7 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.frameLayout,fragment)
         fragmentTransaction.commit()
     }
+
+
 
 }
