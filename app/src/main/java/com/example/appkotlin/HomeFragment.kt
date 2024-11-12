@@ -1,7 +1,9 @@
 package com.example.appkotlin
 
 import android.content.Intent
+import android.os.Binder
 import android.os.Bundle
+import android.renderscript.ScriptGroup.Binding
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appkotlin.model.Produto
 import com.example.appkotlin.view.ProdutoAdapter
+import com.google.android.material.progressindicator.BaseProgressIndicator
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 
